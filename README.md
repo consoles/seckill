@@ -39,6 +39,8 @@ $ mvn archetype:generate -DarchetypeCatalog=internal -DgroudId=io.github.console
 
 ## DAO层
 
+接口设计 + SQL语句编写,代码和SQL进行分离,方便Review。逻辑程序应该放在Service层完成。
+
 ### DB设计与编码
 
 在设计表的时候最好有一个类型为`timestamp`的`create_time`字段,用来表示该行数据的创建时间。Mybatis可以通过注解和xml编写sql,但是本质上注解是java源码,改动需要重新编译,建议使用*xml编写sql*。
@@ -56,3 +58,15 @@ List<Seckill> queryAll(int offset, int limit);
 ```
 
 以上的方法在运行的时候会变成下面的形式`queryAll(arg0,arg1);`当一个参数的时候没有问题,当有多个参数的时候需要高度mybatis哪个位置是什么参数,解决方法是修改dao接口,参数增加`@Param`注解。
+
+## Service层
+
+设计业务接口的时候应该站在使用者的角度设计接口。初学者总是关注接口如何实现,这样设计出来的接口往往非常冗余,别人用接口的时候非常不便。主要包含以下的3个方面:
+
+1. 方法的定义粒度;
+2. 参数,例如不应该传入Map或者一大串的参数;
+3. return/异常
+
+DTO的作用就是方面web层和service层的数据传输。Spring声明式事务只回滚运行时异常。
+
+> 使用枚举表示常量数据字典更优雅。
