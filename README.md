@@ -70,3 +70,16 @@ List<Seckill> queryAll(int offset, int limit);
 DTO的作用就是方面web层和service层的数据传输。Spring声明式事务只回滚运行时异常。
 
 > 使用枚举表示常量数据字典更优雅。
+
+### Spring声明式事务
+
+使用`@Transactional`注解来声明事务,尽量避免一次配置永久生效,因为事务是一个特别精细的过程。使用注解有以下优点:
+
+1. 开发团队达成一致约定,明确标注事务方法的编程风格;
+2. 保证事务方法的执行时间尽可能短,不要穿插其他的网络操作,例如RPC/HTTP(Redis等),或者将它们剥离到事务方法外部;
+3. 不是所有的方法都需要事务。例如只读操作不需要事务。
+
+## 附录:osx下idea快捷键
+
+- 针对接口生成测试类:command + shift + T
+- 自动生成constructor,getter,setter,toString:command + N

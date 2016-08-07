@@ -13,15 +13,18 @@ import io.github.consoles.exception.SeckillException;
 import io.github.consoles.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by yiihua-013 on 16/8/6.
  */
+@Service
 public class SeckillServiceImpl implements SeckillService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -31,7 +34,9 @@ public class SeckillServiceImpl implements SeckillService {
      */
     private final String salt = "dsjsdijfiosdnfsb;ds$%%$#%#$5345sds\\。;。;水电费\\;[[";
 
+    @Autowired // 该注解是Spring注解,还可使用@Resuorce,@Inject等J2EE规范的注解
     private SeckillDao seckillDao;
+    @Autowired
     private SuccessKilledDao successKilledDao;
 
     public List<Seckill> getSeckillList() {
@@ -57,8 +62,9 @@ public class SeckillServiceImpl implements SeckillService {
         return new Exposer(true, md5, seckillId);
     }
 
+    @Transactional
     public SeckillExcution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException {
-        if (md5 == null || md5.equals(getMD5(seckillId))) {
+        if (md5 == null || !md5.equals(getMD5(seckillId))) {
             throw new SeckillException("seckill data rewrite");
         }
 
