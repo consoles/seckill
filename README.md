@@ -79,7 +79,36 @@ DTO的作用就是方面web层和service层的数据传输。Spring声明式事�
 2. 保证事务方法的执行时间尽可能短,不要穿插其他的网络操作,例如RPC/HTTP(Redis等),或者将它们剥离到事务方法外部;
 3. 不是所有的方法都需要事务。例如只读操作不需要事务。
 
-## 附录:osx下idea快捷键
+## Web层
+
+RESTFul API被Rails发扬光大,强调资源的一种状态,所以URL中使用动词不优雅。DTO用于web和service传输数据。
+
+### SpringMVC运行流程
+
+![SpringMVC运行流程](http://7xlan5.com1.z0.glb.clouddn.com/spring-mvc.png)
+
+如上图所示:
+
+1. 用户所有的请求都会映射到`DispatcherServlet`,这是一个中央控制器的Servlet,会拦截所有请求。
+2. `DispatcherServlet`默认会用到`DefaultAnnotationHandlerMapping`来将URL映射到具体的Handler。
+3. 映射完之后会默认使用`DefaultAnnotationHandlerApdater`,用来做Handler适配,最终会衔接到我们自己开发的`SeckillController`。
+4. `DefaultAnnotationHandlerApdater`的最终的产出是`ModelAndView`(可以用字符串表示,例如:seckill/list,表示seckill目录下的list.jsp),ModelAndView同时交付到`DispatcherServlet`。
+5. 中央控制器发现我们引用的是一个`InternalResourceViewResolver`,会将Model填充到View中返回给用户。
+
+实际需要我们开发的仅仅是上图蓝色部分的`SeckillController`,其他的部分使用注解配置即可。
+
+### 详情页秒杀逻辑
+
+![详情页秒杀逻辑](http://7xlan5.com1.z0.glb.clouddn.com/seckill-detail.png)
+
+
+
+## 附录
+
+### osx下idea快捷键
 
 - 针对接口生成测试类:command + shift + T
 - 自动生成constructor,getter,setter,toString:command + N
+
+### 常见问题
+- Spring `@Autowired`注解报错:`Could not autowire.No beans if xxx type found.`,[解决方案](http://www.oschina.net/question/202626_181237?fromerr=BYQ08rsA)

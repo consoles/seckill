@@ -26,17 +26,21 @@ public class SeckillExcution {
      */
     private SuccessKilled successKilled;
 
-    public SeckillExcution(long seckillId, SeckillStateEnum stateEnum, SuccessKilled successKilled) {
+    public SeckillExcution(long seckillId, SeckillStateEnum stateEnum) {
         this.seckillId = seckillId;
         this.state = stateEnum.getState();
         this.stateInfo = stateEnum.getStateInfo();
-        this.successKilled = successKilled;
     }
 
     public SeckillExcution(long seckillId, int state, String stateInfo) {
         this.seckillId = seckillId;
         this.state = state;
         this.stateInfo = stateInfo;
+    }
+
+    public SeckillExcution(long seckillId, SeckillStateEnum stateEnum, SuccessKilled successKilled) {
+        this(seckillId,stateEnum);
+        this.successKilled = successKilled;
     }
 
     public long getSeckillId() {

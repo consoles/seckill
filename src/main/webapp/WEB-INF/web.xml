@@ -4,6 +4,22 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
          metadata-complete="true">
-  <!--修改servlet版本为3.1-->
-  <display-name>Archetype Created Web Application</display-name>
+    <!--修改servlet版本为3.1-->
+    <display-name>Archetype Created Web Application</display-name>
+    <!--Dispatcher Servlet-->
+    <servlet>
+        <servlet-name>seckill-servlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--配置springmvc需要加载的配置文件-->
+        <!--spring-dao.xml,spring-service.xml,spring-web.xml-->
+        <!-- mybatis->spring->springmvc -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name><!-- 告诉springmvc有哪些配置文件 -->
+            <param-value>classpath:spring/spring-*.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>seckill-servlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>

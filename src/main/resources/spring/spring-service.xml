@@ -8,9 +8,8 @@
     <!--transaction manager-->
     <bean id="transactionManger" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--inject db pool-->
-        <property name="dataSource" ref="dataSource"/><!--idea在这里会提示错误,因为在当前context下找不到id为dataSource的bean,但是其实它在spring-dao.xml中-->
+        <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--config annotation based declare transaction,默认使用注解来管理事务行为-->
     <tx:annotation-driven transaction-manager="transactionManger"/>
-
 </beans>

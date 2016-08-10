@@ -40,12 +40,12 @@ public class Exposer {
     }
 
     public Exposer(boolean exposed, String md5, long seckillId) {
-        this(exposed,seckillId);
+        this(exposed, seckillId);
         this.md5 = md5;
     }
 
-    public Exposer(boolean exposed,long seckillId,long now, long start, long end) {
-        this(exposed,seckillId);
+    public Exposer(boolean exposed, long seckillId, long now, long start, long end) {
+        this(exposed, seckillId);
         this.now = now;
         this.start = start;
         this.end = end;
