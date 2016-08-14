@@ -102,12 +102,12 @@ public class Exposer {
     @Override
     public String toString() {
         return "Exposer{" +
-                "exposed=" + exposed +
-                ", md5='" + md5 + '\'' +
-                ", seckillId=" + seckillId +
-                ", now=" + now +
-                ", start=" + start +
-                ", end=" + end +
-                '}';
+            "exposed=" + exposed +
+            ", md5='" + md5 + '\'' +
+            ", seckillId=" + seckillId +
+            ", now=" + now +
+            ", start=" + start +
+            ", end=" + end +
+            '}';
     }
 }

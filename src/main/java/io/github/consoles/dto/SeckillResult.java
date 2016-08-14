@@ -2,7 +2,7 @@ package io.github.consoles.dto;
 
 /**
  * 所有ajax返回类型
- *
+ * <p>
  * 封装JSON结果
  * Created by yiihua-013 on 16/8/8.
  */

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- 全局配置文件:http://www.mybatis.org/mybatis-3/zh/getting-started.html -->
 <!DOCTYPE configuration
-        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
         <!--使用jdbc的getGeneratedKeys获取DB自增主键值-->

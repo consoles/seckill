@@ -2,8 +2,8 @@
 <!-- xxxDao.java -> xxxDao.xml -->
 <!--http://www.mybatis.org/mybatis-3/zh/configuration.html-->
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.github.consoles.dao.SuccessKilledDao">
     <insert id="insertSuccessKilled">
         <!-- 使用insert ignore防止主键冲突报错,返回插入0行 -->

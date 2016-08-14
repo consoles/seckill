@@ -14,7 +14,7 @@
         <div class="panel-body">
             <%--time图标--%>
             <span class="glyphicon glyphicon-time"></span>
-                <%--倒计时区域--%>
+            <%--倒计时区域--%>
             <span id="seckill_box" class="glyphicon"></span>
         </div>
     </div>
@@ -30,7 +30,8 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-8 col-xs-offset-2">
-                        <input type="text" name="killPhone" id="killPhoneKey" placeholder="填写手机号^^" class="form-control">
+                        <input type="text" name="killPhone" id="killPhoneKey" placeholder="填写手机号^^"
+                               class="form-control">
                     </div>
                 </div>
             </div>
@@ -52,11 +53,11 @@
 <script>
     $(function () {
         // 使用el转入参数
-       seckill.detail.init({
+        seckill.detail.init({
             seckillId:${seckill.seckillId},
             startTime:${seckill.startTime.time}, // 毫秒
             endTime:${seckill.endTime.time}
-       });
+        });
     });
 </script>
 </body>

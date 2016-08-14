@@ -39,7 +39,7 @@ public class SeckillExcution {
     }
 
     public SeckillExcution(long seckillId, SeckillStateEnum stateEnum, SuccessKilled successKilled) {
-        this(seckillId,stateEnum);
+        this(seckillId, stateEnum);
         this.successKilled = successKilled;
     }
 
@@ -78,10 +78,10 @@ public class SeckillExcution {
     @Override
     public String toString() {
         return "SeckillExcution{" +
-                "seckillId=" + seckillId +
-                ", state=" + state +
-                ", stateInfo='" + stateInfo + '\'' +
-                ", successKilled=" + successKilled +
-                '}';
+            "seckillId=" + seckillId +
+            ", state=" + state +
+            ", stateInfo='" + stateInfo + '\'' +
+            ", successKilled=" + successKilled +
+            '}';
     }
 }

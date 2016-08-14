@@ -8,18 +8,39 @@
     <!--convention over configuration,约定大于配置-->
     <!--整合mybatis-->
     <!--1.db params-->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <context:property-placeholder location="classpath:jdbc.properties,classpath:redis.properties"/>
     <!--2.db pool-->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${driver}"/>
-        <property name="jdbcUrl" value="${url}"/>
-        <property name="user" value="${username}"/>
-        <property name="password" value="${password}"/>
-        <property name="maxPoolSize" value="30"/>
-        <property name="minPoolSize" value="10"/>
-        <property name="autoCommitOnClose" value="false"/>
-        <property name="checkoutTimeout" value="1000"/>
-        <property name="acquireRetryAttempts" value="2"/>
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+        <!--<property name="driverClass" value="${jdbc.driver}"/>-->
+        <!--<property name="jdbcUrl" value="${jdbc.url}"/>-->
+        <!--<property name="user" value="${jdbc.username}"/>-->
+        <!--<property name="password" value="${jdbc.password}"/>-->
+        <!--<property name="maxPoolSize" value="30"/>-->
+        <!--<property name="minPoolSize" value="10"/>-->
+        <!--<property name="autoCommitOnClose" value="false"/>-->
+        <!--<property name="checkoutTimeout" value="1000"/>-->
+        <!--<property name="acquireRetryAttempts" value="2"/>-->
+    <!--</bean>-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--数据源驱动类可不写,Druid默认会自动根据URL识别DriverClass-->
+        <!--<property name="driverClassName" value="${jdbc.driver}"/>-->
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <property name="initialSize" value="${jdbc.pool.init}"/>
+        <property name="minIdle" value="${jdbc.pool.minIdle}"/>
+        <property name="maxActive" value="${jdbc.pool.maxActive}"/>
+
+        <property name="maxWait" value="60000"/>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="minEvictableIdleTimeMillis" value="30000"/>
+
+        <property name="validationQuery" value="${jdbc.testSql}"/>
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+        <property name="filters" value="stat" />
     </bean>
     <!--3.sqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -39,5 +60,9 @@
         <!--扫描dao接口包-->
         <property name="basePackage" value="io.github.consoles.dao"/>
     </bean>
-
+    <!--redis dao-->
+    <bean id="redisDao" class="io.github.consoles.dao.cache.RedisDao">
+        <constructor-arg name="ip" value="${redis.ip}"/>
+        <constructor-arg name="port" value="${redis.port}"/>
+    </bean>
 </beans>

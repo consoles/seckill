@@ -70,12 +70,12 @@ public class Seckill {
     @Override
     public String toString() {
         return "Seckill{" +
-                "seckillId=" + seckillId +
-                ", name='" + name + '\'' +
-                ", number=" + number +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", createTime=" + createTime +
-                '}';
+            "seckillId=" + seckillId +
+            ", name='" + name + '\'' +
+            ", number=" + number +
+            ", startTime=" + startTime +
+            ", endTime=" + endTime +
+            ", createTime=" + createTime +
+            '}';
     }
 }
